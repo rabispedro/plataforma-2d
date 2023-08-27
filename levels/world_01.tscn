@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://chnedi2gcascd"]
+[gd_scene load_steps=16 format=3 uid="uid://chnedi2gcascd"]
 
 [ext_resource type="Texture2D" uid="uid://pybukby6paxo" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_bfx42"]
 [ext_resource type="Texture2D" uid="uid://yetydowseqji" path="res://assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="2_x0rrx"]
 [ext_resource type="PackedScene" uid="uid://daykh6ydc16av" path="res://actors/player.tscn" id="3_0r30u"]
 [ext_resource type="PackedScene" uid="uid://c80wadbl3c87u" path="res://prefabs/moving_platform.tscn" id="3_u3xsy"]
 [ext_resource type="Texture2D" uid="uid://dj7pnwk1obvbo" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/5 - Sky_color.png" id="4_10bhj"]
+[ext_resource type="PackedScene" uid="uid://cvoa1vsr4vr2o" path="res://prefabs/coin.tscn" id="5_56tqw"]
 [ext_resource type="Texture2D" uid="uid://bd2rim1pjgsqj" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/4 - Cloud_cover_2.png" id="5_78qvt"]
 [ext_resource type="Texture2D" uid="uid://nfivheqxe3ap" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/3 - Cloud_cover_1.png" id="6_rwqxh"]
 [ext_resource type="Shader" path="res://shaders/movement_clouds.gdshader" id="6_twcp0"]
@@ -282,6 +283,35 @@ move_horizontal = false
 
 [node name="Player" parent="." instance=ExtResource("3_0r30u")]
 position = Vector2(32, 192)
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("5_56tqw")]
+position = Vector2(784, 240)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("5_56tqw")]
+position = Vector2(832, 96)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("5_56tqw")]
+position = Vector2(304, 128)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("5_56tqw")]
+position = Vector2(96, 192)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("5_56tqw")]
+position = Vector2(144, 128)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("5_56tqw")]
+position = Vector2(432, 240)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("5_56tqw")]
+position = Vector2(368, 240)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("5_56tqw")]
+position = Vector2(400, 240)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("5_56tqw")]
+position = Vector2(160, 240)
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
