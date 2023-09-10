@@ -10,6 +10,7 @@ Tutorial GODOT 4.0 - Plataforma 2D
 - Personagem principal possui colisão, habilidade de pulo e animação
 - Plataformas móveis
 - Cenário ativo com efeito parallax
+- Objetos coletáveis (moedas)
 
 # PREVIEW DO JOGO
 ![Preview](https://github.com/rabispedro/plataforma-2d/blob/main/preview.png)
