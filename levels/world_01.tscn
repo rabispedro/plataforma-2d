@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://chnedi2gcascd"]
+[gd_scene load_steps=17 format=3 uid="uid://chnedi2gcascd"]
 
 [ext_resource type="Texture2D" uid="uid://pybukby6paxo" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_bfx42"]
 [ext_resource type="Texture2D" uid="uid://yetydowseqji" path="res://assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="2_x0rrx"]
@@ -11,6 +11,7 @@
 [ext_resource type="Shader" path="res://shaders/movement_clouds.gdshader" id="6_twcp0"]
 [ext_resource type="Texture2D" uid="uid://brtsarfngh85w" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="7_wd8mg"]
 [ext_resource type="Texture2D" uid="uid://cvswl63n5d4hy" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="8_mfm7s"]
+[ext_resource type="PackedScene" uid="uid://1bdj4cqu7qpm" path="res://actors/enemy.tscn" id="12_7bl5x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kfis1"]
 texture = ExtResource("1_bfx42")
@@ -361,3 +362,6 @@ motion_mirroring = Vector2(432, 0)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_mfm7s")
 centered = false
+
+[node name="enemy" parent="." instance=ExtResource("12_7bl5x")]
+position = Vector2(31, 224)
