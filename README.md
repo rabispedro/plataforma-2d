@@ -10,3 +10,4 @@ Tutorial GODOT 4.0 - Plataforma 2D
 
 ![Preview](https://github.com/rabispedro/plataforma-2d/blob/main/preview.png)
 ![Preview](https://github.com/rabispedro/plataforma-2d/blob/main/preview2.png)
+![Preview](https://github.com/rabispedro/plataforma-2d/blob/main/preview3.png)
