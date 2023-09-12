@@ -199,6 +199,5 @@ libraries = {
 }
 
 [node name="wall_detector" type="RayCast2D" parent="."]
-position = Vector2(0, 1)
-target_position = Vector2(-7, 0)
-collision_mask = 6
+target_position = Vector2(-8, 0)
+collision_mask = 3
