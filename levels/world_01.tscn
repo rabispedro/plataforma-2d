@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://chnedi2gcascd"]
+[gd_scene load_steps=18 format=3 uid="uid://chnedi2gcascd"]
 
+[ext_resource type="Script" path="res://scripts/world_01.gd" id="1_73amx"]
 [ext_resource type="Texture2D" uid="uid://pybukby6paxo" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_bfx42"]
 [ext_resource type="Texture2D" uid="uid://yetydowseqji" path="res://assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="2_x0rrx"]
 [ext_resource type="PackedScene" uid="uid://daykh6ydc16av" path="res://actors/player.tscn" id="3_0r30u"]
@@ -256,6 +257,7 @@ shader = ExtResource("6_twcp0")
 shader_parameter/move_speed = 0.02
 
 [node name="World01" type="Node2D"]
+script = ExtResource("1_73amx")
 metadata/_edit_vertical_guides_ = [-57.0]
 metadata/_edit_horizontal_guides_ = [336.0]
 
@@ -363,14 +365,31 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_mfm7s")
 centered = false
 
-[node name="enemy" parent="." instance=ExtResource("12_7bl5x")]
+[node name="Camera" type="Camera2D" parent="."]
+visible = false
+zoom = Vector2(2, 2)
+limit_left = -48
+limit_top = 0
+limit_right = 928
+limit_bottom = 336
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 16.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="enemy" parent="Enemies" instance=ExtResource("12_7bl5x")]
 position = Vector2(96, 256)
 
-[node name="enemy2" parent="." instance=ExtResource("12_7bl5x")]
+[node name="enemy2" parent="Enemies" instance=ExtResource("12_7bl5x")]
 position = Vector2(592, 192)
 
-[node name="enemy3" parent="." instance=ExtResource("12_7bl5x")]
+[node name="enemy3" parent="Enemies" instance=ExtResource("12_7bl5x")]
 position = Vector2(256, 256)
 
-[node name="enemy4" parent="." instance=ExtResource("12_7bl5x")]
+[node name="enemy4" parent="Enemies" instance=ExtResource("12_7bl5x")]
 position = Vector2(432, 96)

@@ -1,13 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://daykh6ydc16av"]
+[gd_scene load_steps=14 format=3 uid="uid://daykh6ydc16av"]
 
 [ext_resource type="Script" path="res://levels/Player.gd" id="1_4oefm"]
 [ext_resource type="Texture2D" uid="uid://d3h3drba4dqhs" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Idle (32 x 32).png" id="2_swqgr"]
 [ext_resource type="Texture2D" uid="uid://cc3108ngheykd" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Jumping (32 x 32).png" id="3_pcfw8"]
 [ext_resource type="Texture2D" uid="uid://bnia8ogrirg2v" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Running (32 x 32).png" id="4_bs1kd"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3ob7"]
-radius = 8.0
-height = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ne0a"]
 atlas = ExtResource("2_swqgr")
@@ -72,34 +68,38 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3ob7"]
+radius = 8.0
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3e7m"]
+size = Vector2(18, 11)
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -16)
-collision_mask = 2
+collision_mask = 22
 script = ExtResource("1_4oefm")
-
-[node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 8)
-shape = SubResource("CapsuleShape2D_a3ob7")
-
-[node name="Camera" type="Camera2D" parent="."]
-visible = false
-zoom = Vector2(2, 2)
-limit_left = -48
-limit_top = 0
-limit_right = 928
-limit_bottom = 336
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 16.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kbytk")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
 
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_a3ob7")
+
 [node name="animator" type="AnimationPlayer" parent="."]
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_q3e7m")
+debug_color = Color(0.545098, 0, 0, 0.419608)
+
+[node name="Remote" type="RemoteTransform2D" parent="."]
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

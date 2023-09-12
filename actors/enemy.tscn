@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://1bdj4cqu7qpm"]
+[gd_scene load_steps=13 format=3 uid="uid://1bdj4cqu7qpm"]
 
 [ext_resource type="Texture2D" uid="uid://bbavycx8w4dfx" path="res://assets/Sprite Pack 2/4 - Robo Pumpkin/Walking (16 x 16).png" id="1_ink7v"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_vwnp2"]
 [ext_resource type="Texture2D" uid="uid://b5osee0ekf22o" path="res://assets/Sprite Pack 2/4 - Robo Pumpkin/Hurt (16 x 16).png" id="3_ximf5"]
 [ext_resource type="Texture2D" uid="uid://bk7gg1w2alu52" path="res://assets/Sprite Pack 2/4 - Robo Pumpkin/Standing (16 x 16).png" id="4_rsy0h"]
+[ext_resource type="PackedScene" uid="uid://c4t42w0a8swhx" path="res://prefabs/hitbox.tscn" id="5_uhpcd"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ue6vw"]
-radius = 7.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v31ua"]
+radius = 4.0
+height = 14.0
 
 [sub_resource type="Animation" id="Animation_engga"]
 length = 0.001
@@ -50,7 +52,6 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_cyjgn"]
 resource_name = "hurt"
 length = 0.1
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -178,7 +179,10 @@ _data = {
 "walk": SubResource("Animation_pyt0v")
 }
 
-[node name="enemy" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rf5x8"]
+size = Vector2(10, 2)
+
+[node name="enemy" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(1, -8)
 collision_layer = 4
 collision_mask = 2
@@ -189,7 +193,9 @@ texture = ExtResource("1_ink7v")
 hframes = 2
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ue6vw")
+position = Vector2(0, 4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_v31ua")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 autoplay = "walk"
@@ -200,4 +206,12 @@ libraries = {
 
 [node name="wall_detector" type="RayCast2D" parent="."]
 target_position = Vector2(-8, 0)
-collision_mask = 3
+collision_mask = 6
+
+[node name="Hitbox" parent="." instance=ExtResource("5_uhpcd")]
+
+[node name="Collision2" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_rf5x8")
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

@@ -17,7 +17,6 @@ func _physics_process(delta: float) -> void:
 	if wall_detector.is_colliding():
 		direction *= -1
 		wall_detector.scale.x *= -1
-		print("Colisao detectada")
 
 	if direction == 1:
 		texture.flip_h = true
@@ -27,3 +26,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = direction * SPEED * delta
 
 	move_and_slide()
+
+func _on_anim_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "hurt":
+		queue_free()
