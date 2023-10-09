@@ -11,6 +11,8 @@ Tutorial GODOT 4.0 - Plataforma 2D
 - Plataformas móveis
 - Cenário ativo com efeito parallax
 - Objetos coletáveis (moedas)
+- Player pode sofrer e causar dano
+- Efeito de Knockback (Ao levar dano player é empurrado enquanto fica vermelho)
 
 # PREVIEW DO JOGO
 ![Preview](https://github.com/rabispedro/plataforma-2d/blob/main/preview.png)
