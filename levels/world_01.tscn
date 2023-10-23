@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chnedi2gcascd"]
+[gd_scene load_steps=24 format=3 uid="uid://chnedi2gcascd"]
 
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_73amx"]
 [ext_resource type="Texture2D" uid="uid://pybukby6paxo" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_bfx42"]
@@ -13,6 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://brtsarfngh85w" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="7_wd8mg"]
 [ext_resource type="Texture2D" uid="uid://cvswl63n5d4hy" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="8_mfm7s"]
 [ext_resource type="PackedScene" uid="uid://1bdj4cqu7qpm" path="res://actors/enemy.tscn" id="12_7bl5x"]
+[ext_resource type="Texture2D" uid="uid://c2hl0j4ti38ef" path="res://assets/Extras/ui_buttons_arrow_left_NORMAL.png" id="14_vujih"]
+[ext_resource type="Texture2D" uid="uid://boes6unw7acs5" path="res://assets/Extras/ui_buttons_arrow_left_PRESSED.png" id="15_x3whp"]
+[ext_resource type="Texture2D" uid="uid://ccsv0iur8hvo6" path="res://assets/Extras/ui_buttons_arrow_right_NORMAL.png" id="16_7us77"]
+[ext_resource type="Texture2D" uid="uid://b5daep0t1faxc" path="res://assets/Extras/ui_buttons_arrow_right_PRESSED.png" id="17_ws4h1"]
+[ext_resource type="Texture2D" uid="uid://bk2nvx4rm1ekp" path="res://assets/Extras/ui_buttons_arrow_up_NORMAL.png" id="18_85w8l"]
+[ext_resource type="Texture2D" uid="uid://1fei5gslfs67" path="res://assets/Extras/ui_buttons_arrow_up_PRESSED.png" id="19_iagat"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kfis1"]
 texture = ExtResource("1_bfx42")
@@ -393,3 +399,24 @@ position = Vector2(256, 256)
 
 [node name="enemy4" parent="Enemies" instance=ExtResource("12_7bl5x")]
 position = Vector2(432, 96)
+
+[node name="Controls" type="CanvasLayer" parent="."]
+
+[node name="UiLeft" type="TouchScreenButton" parent="Controls"]
+position = Vector2(80, 240)
+scale = Vector2(1.4, 1.4)
+texture_normal = ExtResource("14_vujih")
+texture_pressed = ExtResource("15_x3whp")
+action = "ui_left"
+
+[node name="UiRight" type="TouchScreenButton" parent="Controls"]
+position = Vector2(128, 240)
+texture_normal = ExtResource("16_7us77")
+texture_pressed = ExtResource("17_ws4h1")
+action = "ui_right"
+
+[node name="UiUp" type="TouchScreenButton" parent="Controls"]
+position = Vector2(592, 240)
+texture_normal = ExtResource("18_85w8l")
+texture_pressed = ExtResource("19_iagat")
+action = "ui_accept"
