@@ -6,8 +6,10 @@ const JUMP_FORCE = -400.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping := false
+var is_hurted
 var player_life := 10
 var knockback_vector := Vector2.ZERO 
+var direction
 
 @onready var animation := $anim as AnimatedSprite2D
 @onready var remote_transform := $Remote as RemoteTransform2D
@@ -25,21 +27,17 @@ func _physics_process(delta):
 		is_jumping = false
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
+	direction = Input.get_axis("ui_left", "ui_right")
 	if direction != 0:
 		velocity.x = direction * SPEED
 		animation.scale.x = direction
-		if !is_jumping:
-			animation.play("run")
-	elif is_jumping:
-		animation.play("jump")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		animation.play("idle")
 		
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
  
+	_set_state()
 	move_and_slide()
 
 func _on_hurt_box_body_entered(body) -> void:
@@ -68,6 +66,9 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 		animation.modulate = Color(1,0,0,1)
 		knockback_tween.parallel().tween_property(animation, "modulate", Color(1,1,1,1), duration)
 		
+	is_hurted = true
+	await get_tree().create_timer(.3).timeout
+	is_hurted = false
 
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -76,3 +77,17 @@ func _input(event):
 			is_jumping = true
 		elif is_on_floor():
 			is_jumping = false
+
+func _set_state():
+	var state = "idle"
+	
+	if !is_on_floor(): #nao esta no chao
+		state = "jump"
+	elif direction!= 0:
+		state = "run"
+	
+	if is_hurted:
+		state = "hurt"
+	
+	if animation.name != state:
+		animation.play(state)
