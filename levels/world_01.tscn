@@ -403,20 +403,22 @@ position = Vector2(432, 96)
 [node name="Controls" type="CanvasLayer" parent="."]
 
 [node name="UiLeft" type="TouchScreenButton" parent="Controls"]
-position = Vector2(80, 240)
+position = Vector2(57, 247)
 scale = Vector2(1.4, 1.4)
 texture_normal = ExtResource("14_vujih")
 texture_pressed = ExtResource("15_x3whp")
 action = "ui_left"
 
 [node name="UiRight" type="TouchScreenButton" parent="Controls"]
-position = Vector2(128, 240)
+position = Vector2(110, 247)
+scale = Vector2(1.40625, 1.40625)
 texture_normal = ExtResource("16_7us77")
 texture_pressed = ExtResource("17_ws4h1")
 action = "ui_right"
 
 [node name="UiUp" type="TouchScreenButton" parent="Controls"]
-position = Vector2(592, 240)
+position = Vector2(522, 245)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("18_85w8l")
 texture_pressed = ExtResource("19_iagat")
 action = "ui_accept"

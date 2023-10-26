@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 200.0
+const SPEED = 150.0
 const JUMP_FORCE = -400.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -68,3 +68,11 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 		animation.modulate = Color(1,0,0,1)
 		knockback_tween.parallel().tween_property(animation, "modulate", Color(1,1,1,1), duration)
 		
+
+func _input(event):
+	if event is InputEventScreenTouch:
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = JUMP_FORCE
+			is_jumping = true
+		elif is_on_floor():
+			is_jumping = false
