@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://chnedi2gcascd"]
+[gd_scene load_steps=25 format=3 uid="uid://chnedi2gcascd"]
 
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_73amx"]
 [ext_resource type="Texture2D" uid="uid://pybukby6paxo" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_bfx42"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b5daep0t1faxc" path="res://assets/Extras/ui_buttons_arrow_right_PRESSED.png" id="17_ws4h1"]
 [ext_resource type="Texture2D" uid="uid://bk2nvx4rm1ekp" path="res://assets/Extras/ui_buttons_arrow_up_NORMAL.png" id="18_85w8l"]
 [ext_resource type="Texture2D" uid="uid://1fei5gslfs67" path="res://assets/Extras/ui_buttons_arrow_up_PRESSED.png" id="19_iagat"]
+[ext_resource type="PackedScene" uid="uid://cwdwey5jucjla" path="res://prefabs/breakable_box.tscn" id="20_ei5ks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kfis1"]
 texture = ExtResource("1_bfx42")
@@ -385,6 +386,51 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="BreakableBoxes" type="Node2D" parent="."]
+position = Vector2(176, 224)
+
+[node name="BreakableBox" parent="BreakableBoxes" instance=ExtResource("20_ei5ks")]
+position = Vector2(-32, -136)
+pieces = PackedStringArray("res://assets/Brick Pieces/brick-piece-01.png", "res://assets/Brick Pieces/brick-piece-02.png", "res://assets/Brick Pieces/brick-piece-03.png", "res://assets/Brick Pieces/brick-piece-04.png")
+hitpoints = 1
+impulse = 500
+
+[node name="BreakableBox6" parent="BreakableBoxes" instance=ExtResource("20_ei5ks")]
+position = Vector2(216, -168)
+pieces = PackedStringArray("res://assets/Brick Pieces/brick-piece-01.png", "res://assets/Brick Pieces/brick-piece-02.png", "res://assets/Brick Pieces/brick-piece-03.png", "res://assets/Brick Pieces/brick-piece-04.png")
+hitpoints = 1
+impulse = 500
+
+[node name="BreakableBox7" parent="BreakableBoxes" instance=ExtResource("20_ei5ks")]
+position = Vector2(280, -168)
+pieces = PackedStringArray("res://assets/Brick Pieces/brick-piece-01.png", "res://assets/Brick Pieces/brick-piece-02.png", "res://assets/Brick Pieces/brick-piece-03.png", "res://assets/Brick Pieces/brick-piece-04.png")
+hitpoints = 1
+impulse = 500
+
+[node name="BreakableBox8" parent="BreakableBoxes" instance=ExtResource("20_ei5ks")]
+position = Vector2(696, -168)
+pieces = PackedStringArray("res://assets/Brick Pieces/brick-piece-01.png", "res://assets/Brick Pieces/brick-piece-02.png", "res://assets/Brick Pieces/brick-piece-03.png", "res://assets/Brick Pieces/brick-piece-04.png")
+hitpoints = 10
+impulse = 100
+
+[node name="BreakableBox4" parent="BreakableBoxes" instance=ExtResource("20_ei5ks")]
+position = Vector2(-24, 0)
+pieces = PackedStringArray("res://assets/Brick Pieces/brick-piece-01.png", "res://assets/Brick Pieces/brick-piece-02.png", "res://assets/Brick Pieces/brick-piece-03.png", "res://assets/Brick Pieces/brick-piece-04.png")
+
+[node name="BreakableBox5" parent="BreakableBoxes" instance=ExtResource("20_ei5ks")]
+position = Vector2(-24, 0)
+pieces = PackedStringArray("res://assets/Brick Pieces/brick-piece-01.png", "res://assets/Brick Pieces/brick-piece-02.png", "res://assets/Brick Pieces/brick-piece-03.png", "res://assets/Brick Pieces/brick-piece-04.png")
+
+[node name="BreakableBox2" parent="BreakableBoxes" instance=ExtResource("20_ei5ks")]
+position = Vector2(56, -72)
+pieces = PackedStringArray("res://assets/Brick Pieces/brick-piece-01.png", "res://assets/Brick Pieces/brick-piece-02.png", "res://assets/Brick Pieces/brick-piece-03.png", "res://assets/Brick Pieces/brick-piece-04.png")
+hitpoints = 5
+
+[node name="BreakableBox3" parent="BreakableBoxes" instance=ExtResource("20_ei5ks")]
+position = Vector2(88, -72)
+pieces = PackedStringArray("res://assets/Brick Pieces/brick-piece-01.png", "res://assets/Brick Pieces/brick-piece-02.png", "res://assets/Brick Pieces/brick-piece-03.png", "res://assets/Brick Pieces/brick-piece-04.png")
+hitpoints = 5
 
 [node name="Enemies" type="Node2D" parent="."]
 
