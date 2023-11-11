@@ -292,7 +292,7 @@ distance = 64
 move_horizontal = false
 
 [node name="Player" parent="." instance=ExtResource("3_0r30u")]
-position = Vector2(32, 192)
+position = Vector2(33, 251)
 
 [node name="Coins" type="Node2D" parent="."]
 
@@ -373,7 +373,6 @@ texture = ExtResource("8_mfm7s")
 centered = false
 
 [node name="Camera" type="Camera2D" parent="."]
-visible = false
 zoom = Vector2(2, 2)
 limit_left = -48
 limit_top = 0
@@ -419,7 +418,7 @@ position = Vector2(-24, 0)
 pieces = PackedStringArray("res://assets/Brick Pieces/brick-piece-01.png", "res://assets/Brick Pieces/brick-piece-02.png", "res://assets/Brick Pieces/brick-piece-03.png", "res://assets/Brick Pieces/brick-piece-04.png")
 
 [node name="BreakableBox5" parent="BreakableBoxes" instance=ExtResource("20_ei5ks")]
-position = Vector2(-24, 0)
+position = Vector2(72, -72)
 pieces = PackedStringArray("res://assets/Brick Pieces/brick-piece-01.png", "res://assets/Brick Pieces/brick-piece-02.png", "res://assets/Brick Pieces/brick-piece-03.png", "res://assets/Brick Pieces/brick-piece-04.png")
 
 [node name="BreakableBox2" parent="BreakableBoxes" instance=ExtResource("20_ei5ks")]

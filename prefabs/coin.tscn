@@ -109,10 +109,12 @@ script = ExtResource("1_y0mr5")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lt843")
-animation = &"collect"
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.472936
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_poibb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
