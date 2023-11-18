@@ -26,7 +26,9 @@ func _physics_process(delta: float) -> void:
 	velocity.x = direction * SPEED * delta
 
 	move_and_slide()
+	return
 
 func _on_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "hurt":
 		queue_free()
+	return

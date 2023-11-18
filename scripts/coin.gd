@@ -1,7 +1,9 @@
 extends Area2D
 
-func _on_body_entered(body):
+func _on_body_entered(body) -> void:
 	$Anim.play("collect")
+	return
 
-func _on_anim_animation_finished():
+func _on_anim_animation_finished() -> void:
 	queue_free()
+	return

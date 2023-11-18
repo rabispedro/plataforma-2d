@@ -14,7 +14,7 @@ var direction
 @onready var animation := $anim as AnimatedSprite2D
 @onready var remote_transform := $Remote as RemoteTransform2D
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -39,6 +39,14 @@ func _physics_process(delta):
  
 	_set_state()
 	move_and_slide()
+	
+	for platforms in get_slide_collision_count():
+		var collision = get_slide_collision(platforms)
+		
+		if collision.get_collider().has_method("has_collided_with"):
+			collision.get_collider().has_collided_with(collision, self)
+	
+	return
 
 func _on_hurt_box_body_entered(body) -> void:
 #	if body.is_in_group("enemies"):
@@ -50,12 +58,14 @@ func _on_hurt_box_body_entered(body) -> void:
 			take_damage(Vector2(-200,-200))
 		elif $ray_left.is_colliding():
 			take_damage(Vector2(200,-200))
+	return
 
 func follow_camera(camera: Camera2D) -> void:
 	var camera_path = camera.get_path()
 	remote_transform.remote_path = camera_path
-	
-func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
+	return
+
+func take_damage(knockback_force := Vector2.ZERO, duration := 0.25) -> void:
 	player_life -= 1
 	
 	if  knockback_force != Vector2.ZERO:
@@ -69,16 +79,18 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 	is_hurted = true
 	await get_tree().create_timer(.3).timeout
 	is_hurted = false
+	return
 
-func _input(event):
+func _input(event) -> void:
 	if event is InputEventScreenTouch:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_FORCE
 			is_jumping = true
 		elif is_on_floor():
 			is_jumping = false
+	return
 
-func _set_state():
+func _set_state() -> void:
 	var state = "idle"
 	
 	if !is_on_floor(): #nao esta no chao
@@ -91,9 +103,9 @@ func _set_state():
 	
 	if animation.name != state:
 		animation.play(state)
+	return
 
-
-func _on_head_collider_body_entered(body):
+func _on_head_collider_body_entered(body) -> void:
 	if body.has_method("break_sprite"):
 		body.hitpoints -= 1
 		if body.hitpoints < 0:
@@ -101,4 +113,4 @@ func _on_head_collider_body_entered(body):
 		else:
 			body.animator.play("hit")
 			body.create_coin()
-
+	return
