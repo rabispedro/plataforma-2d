@@ -21,7 +21,7 @@ func _physics_process(delta) -> void:
 	position += velocity * delta
 	return
 
-func has_collided_with(collision: KinematicCollision2D, collider: CharacterBody2D) -> void:
+func has_collided_with(_collision: KinematicCollision2D, _collider: CharacterBody2D) -> void:
 	if not isTriggered:
 		isTriggered = true
 		animator.play("shake")
@@ -30,7 +30,7 @@ func has_collided_with(collision: KinematicCollision2D, collider: CharacterBody2
 	return
 
 
-func _on_animation_player_animation_finished(anim_name: String) -> void:
+func _on_animation_player_animation_finished(_anim_name: String) -> void:
 	set_physics_process(true)
 	respawnTimer.start(resetTimer)
 	return

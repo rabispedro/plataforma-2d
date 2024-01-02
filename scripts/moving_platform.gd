@@ -14,7 +14,7 @@ func _ready() -> void:
 	move_platform()
 	return
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	platform.position = platform.position.lerp(follow, 0.5)
 	return
 

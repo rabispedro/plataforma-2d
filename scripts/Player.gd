@@ -48,7 +48,7 @@ func _physics_process(delta) -> void:
 	
 	return
 
-func _on_hurt_box_body_entered(body) -> void:
+func _on_hurt_box_body_entered(_body) -> void:
 #	if body.is_in_group("enemies"):
 #		queue_free()
 	if player_life < 0:

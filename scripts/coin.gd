@@ -1,6 +1,6 @@
 extends Area2D
 
-func _on_body_entered(body) -> void:
+func _on_body_entered(_body) -> void:
 	$Anim.play("collect")
 	return
 

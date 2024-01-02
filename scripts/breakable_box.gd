@@ -21,7 +21,7 @@ func break_sprite() -> void:
 
 func create_coin() -> void:
 	var coin = coin_instance.instantiate()
-	get_parent().add_child(coin)
+	get_parent().call_deferred("add_child", coin)
 	coin.global_position = spawn_coin.global_position
 	coin.apply_impulse(Vector2(randi_range(-50,50), -150))
 	return
