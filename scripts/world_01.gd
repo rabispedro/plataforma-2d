@@ -1,3 +1,4 @@
+class_name World01
 extends Node2D
 
 @onready var player := $Player as CharacterBody2D

@@ -1,3 +1,4 @@
+class_name MovingPlatform
 extends Node2D
 
 const WAIT_DURATION := 1.0

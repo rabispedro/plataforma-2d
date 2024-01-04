@@ -1,3 +1,4 @@
+class_name FallingPlatform
 extends AnimatableBody2D
 
 @onready var animator : AnimationPlayer = $AnimationPlayer

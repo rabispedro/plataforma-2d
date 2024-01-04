@@ -1,3 +1,4 @@
+class_name BreakableBox
 extends CharacterBody2D
 
 const box_pieces = preload("res://prefabs/box_pieces.tscn")

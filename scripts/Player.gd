@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 const SPEED = 150.0
@@ -49,15 +50,10 @@ func _physics_process(delta) -> void:
 	return
 
 func _on_hurt_box_body_entered(_body) -> void:
-#	if body.is_in_group("enemies"):
-#		queue_free()
-	if player_life < 0:
-		queue_free() 
-	else:
-		if $ray_right.is_colliding():
-			take_damage(Vector2(-200,-200))
-		elif $ray_left.is_colliding():
-			take_damage(Vector2(200,-200))
+	if $ray_right.is_colliding():
+		take_damage(Vector2(-200,-200))
+	elif $ray_left.is_colliding():
+		take_damage(Vector2(200,-200))
 	return
 
 func follow_camera(camera: Camera2D) -> void:
@@ -67,6 +63,10 @@ func follow_camera(camera: Camera2D) -> void:
 
 func take_damage(knockback_force := Vector2.ZERO, duration := 0.25) -> void:
 	player_life -= 1
+	
+	if player_life <= 0:
+		queue_free()
+		return
 	
 	if  knockback_force != Vector2.ZERO:
 		knockback_vector = knockback_force
