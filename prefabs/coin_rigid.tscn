@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://oomvw3n6glws"]
+[gd_scene load_steps=4 format=3 uid="uid://oomvw3n6glws"]
 
 [ext_resource type="PackedScene" uid="uid://cvoa1vsr4vr2o" path="res://prefabs/coin.tscn" id="1_qpoxw"]
+[ext_resource type="Script" path="res://scripts/coin_rigid.gd" id="1_xvp7w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bntna"]
 
@@ -9,8 +10,11 @@ top_level = true
 collision_layer = 8
 collision_mask = 2
 lock_rotation = true
+script = ExtResource("1_xvp7w")
 
 [node name="Coin" parent="." instance=ExtResource("1_qpoxw")]
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bntna")
+
+[connection signal="tree_exited" from="Coin" to="." method="_on_coin_tree_exited"]

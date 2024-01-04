@@ -12,10 +12,9 @@ const lines : Array[String] = [
 ]
 
 func _unhandled_input(event) -> void:
-	if area_sign.get_overlapping_bodies().size() >0:
+	if area_sign.get_overlapping_bodies().size() > 0:
 		texture.show()
-		if event.is_action_pressed("interact") && !DialogManager.is_message_active:
-			print("_unhandled_input kk")
+		if event.is_action_pressed("interact") && not DialogManager.is_message_active:
 			texture.hide()
 			DialogManager.start_message(global_position, lines)
 	else:

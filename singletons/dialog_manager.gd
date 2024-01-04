@@ -1,24 +1,26 @@
 extends Node
 
-@onready var dialog_box_scene = preload("res://prefabs/dialog_box.tscn")
-var message_lines : Array[String] = []
-var current_line = 0
+@onready var dialog_box_scene: PackedScene = preload("res://prefabs/dialog_box.tscn")
 
-var dialog_box 
-var dialog_box_position := Vector2.ZERO
+var message_lines: Array[String] = []
+var current_line: int = 0
 
-var is_message_active := false
-var can_advance_message := false 
+var dialog_box: MarginContainer
+var dialog_box_position: Vector2 = Vector2.ZERO
+
+var is_message_active: bool = false
+var can_advance_message: bool = false 
 
 func start_message(position: Vector2, lines: Array[String]) -> void:
 	if is_message_active:
 		return
-		
+	
 	message_lines = lines
 	dialog_box_position = position
 	show_text()
 	is_message_active = true
-	
+	return
+
 func show_text() -> void:
 	dialog_box = dialog_box_scene.instantiate()
 	dialog_box.text_display_finished.connect(_on_all_text_displayed)
@@ -39,5 +41,4 @@ func _unhandled_input(event):
 			current_line = 0
 			return
 		show_text()
-		
-		
+	return

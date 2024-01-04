@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://daykh6ydc16av"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_ctnqt"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ctnqt"]
 [ext_resource type="Texture2D" uid="uid://csmtlualij253" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Hurt (32 x 32).png" id="2_23bka"]
 [ext_resource type="Texture2D" uid="uid://d3h3drba4dqhs" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Idle (32 x 32).png" id="2_swqgr"]
 [ext_resource type="Texture2D" uid="uid://cc3108ngheykd" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Jumping (32 x 32).png" id="3_pcfw8"]

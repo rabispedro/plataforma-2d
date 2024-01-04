@@ -16,7 +16,6 @@ func _ready() -> void:
 	set_physics_process(false)
 	return
 
-
 func _physics_process(delta) -> void:
 	velocity.y += gravity * delta
 	position += velocity * delta

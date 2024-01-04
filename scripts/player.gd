@@ -106,7 +106,7 @@ func _set_state() -> void:
 	return
 
 func _on_head_collider_body_entered(body) -> void:
-	if body.has_method("break_sprite"):
+	if body is BreakableBox:
 		body.hitpoints -= 1
 		if body.hitpoints < 0:
 			body.break_sprite()

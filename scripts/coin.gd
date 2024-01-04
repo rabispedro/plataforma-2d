@@ -6,5 +6,5 @@ func _on_body_entered(_body) -> void:
 	return
 
 func _on_anim_animation_finished() -> void:
-	get_parent().queue_free()
+	queue_free()
 	return
