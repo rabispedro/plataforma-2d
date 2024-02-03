@@ -198,11 +198,11 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v31ua")
 
 [node name="anim" type="AnimationPlayer" parent="."]
-autoplay = "walk"
-speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_rnk68")
 }
+autoplay = "walk"
+speed_scale = 0.5
 
 [node name="wall_detector" type="RayCast2D" parent="."]
 target_position = Vector2(-8, 0)
