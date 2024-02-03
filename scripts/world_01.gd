@@ -1,9 +1,9 @@
 class_name World01
 extends Node2D
 
-@onready var player := $Player as CharacterBody2D
-@onready var camera := $Camera as Camera2D
-@onready var control = $HUD/control
+@onready var player: CharacterBody2D = $Player
+@onready var camera: Camera2D = $Camera
+@onready var control: HUDManager = $HUD/control
 
 func _ready() -> void:
 	player.follow_camera(camera)
@@ -14,8 +14,7 @@ func _ready() -> void:
 	Globals.player_life = 3
 	return
 
-
 func reload_game() -> void:
-	await  get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	get_tree().reload_current_scene()
 	return

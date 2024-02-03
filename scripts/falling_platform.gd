@@ -1,16 +1,16 @@
 class_name FallingPlatform
 extends AnimatableBody2D
 
-@onready var animator : AnimationPlayer = $AnimationPlayer
-@onready var respawnTimer : Timer = $RespawnTimer
-@onready var texture : Sprite2D = $Texture
-@onready var respawnPosition : Vector2 = global_position
+@export var resetTimer: float = 3.0
 
-@export var resetTimer : float = 3.0
+var velocity: Vector2 = Vector2.ZERO
+var isTriggered: bool = false
+var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var velocity : Vector2 = Vector2.ZERO
-var gravity : int = ProjectSettings.get_setting("physics/2d/default_gravity")
-var isTriggered : bool = false
+@onready var animator: AnimationPlayer = $AnimationPlayer
+@onready var respawnTimer: Timer = $RespawnTimer
+@onready var texture: Sprite2D = $Texture
+@onready var respawnPosition: Vector2 = global_position
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -29,12 +29,10 @@ func has_collided_with(_collision: KinematicCollision2D, _collider: CharacterBod
 	
 	return
 
-
 func _on_animation_player_animation_finished(_anim_name: String) -> void:
 	set_physics_process(true)
 	respawnTimer.start(resetTimer)
 	return
-
 
 func _on_respawn_timer_timeout() -> void:
 	set_physics_process(false)

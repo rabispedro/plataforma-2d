@@ -1,34 +1,31 @@
 class_name Player
 extends CharacterBody2D
 
-const SPEED = 150.0
-const JUMP_FORCE = -400.0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var is_jumping := false
-var is_hurted
-var knockback_vector := Vector2.ZERO 
-var direction
-
-@onready var animation := $anim as AnimatedSprite2D
-@onready var remote_transform := $Remote as RemoteTransform2D
-
 signal player_has_died()
 
-func _physics_process(delta) -> void:
-	# Add the gravity.
+const SPEED: float = 150.0
+const JUMP_FORCE: float = -400.0
+
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var is_jumping: bool = false
+var is_hurted: bool
+var knockback_vector: Vector2 = Vector2.ZERO
+var direction: float
+
+@onready var animation: AnimatedSprite2D = $anim
+@onready var remote_transform: RemoteTransform2D = $Remote
+
+func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
+	
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_FORCE
 		is_jumping = true
 	elif is_on_floor():
 		is_jumping = false
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	
 	direction = Input.get_axis("ui_left", "ui_right")
 	if direction != 0:
 		velocity.x = direction * SPEED
@@ -38,7 +35,7 @@ func _physics_process(delta) -> void:
 		
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
- 
+ 	
 	_set_state()
 	move_and_slide()
 	
@@ -62,7 +59,7 @@ func follow_camera(camera: Camera2D) -> void:
 	remote_transform.remote_path = camera_path
 	return
 
-func take_damage(knockback_force := Vector2.ZERO, duration := 0.25) -> void:
+func take_damage(knockback_force: Vector2 = Vector2.ZERO, duration: float = 0.25) -> void:
 	Globals.player_life -= 1
 	
 	if Globals.player_life <= 0:
@@ -83,7 +80,7 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25) -> void:
 	is_hurted = false
 	return
 
-func _input(event) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_FORCE
@@ -95,7 +92,7 @@ func _input(event) -> void:
 func _set_state() -> void:
 	var state = "idle"
 	
-	if !is_on_floor(): #nao esta no chao
+	if not is_on_floor():
 		state = "jump"
 	elif direction!= 0:
 		state = "run"

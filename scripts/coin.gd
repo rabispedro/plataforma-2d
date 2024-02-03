@@ -1,7 +1,7 @@
 class_name Coin
 extends Area2D
 
-var coins := 1
+var coins: int = 1
 
 func _on_body_entered(_body) -> void:
 	$Anim.play("collect")

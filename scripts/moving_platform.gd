@@ -1,21 +1,23 @@
 class_name MovingPlatform
 extends Node2D
 
-const WAIT_DURATION := 1.0
+@export_category("Properties")
+@export var move_speed: float = 3.0
+@export var distance: int = 192
+@export var move_horizontal: bool = true
 
-@onready var platform := $platform as AnimatableBody2D
-@export var move_speed := 3.0
-@export var distance := 192
-@export var move_horizontal := true
+const WAIT_DURATION: float = 1.0
 
-var follow := Vector2.ZERO
-var platform_center := 16
+var follow: Vector2 = Vector2.ZERO
+var platform_center: int = 16
+
+@onready var platform: AnimatableBody2D = $platform
 
 func _ready() -> void:
 	move_platform()
 	return
 
-func _physics_process(_delta) -> void:
+func _physics_process(_delta: float) -> void:
 	platform.position = platform.position.lerp(follow, 0.5)
 	return
 
