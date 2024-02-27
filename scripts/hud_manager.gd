@@ -24,7 +24,7 @@ func _ready() -> void:
 	reset_clock_timer()
 	return
 
-func _process(delta) -> void:
+func _process(_delta: float) -> void:
 	coins_counter.text = str("%04d" % Globals.coins)
 	score_counter.text = str("%06d" % Globals.score)
 	life_counter.text = str("%02d" % Globals.player_life)
