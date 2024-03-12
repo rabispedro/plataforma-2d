@@ -90,24 +90,24 @@ _data = {
 
 [node name="BasePatrol" type="Node2D"]
 
-[node name="rocket_cherry" type="CharacterBody2D" parent="."]
+[node name="RocketCherry" type="CharacterBody2D" parent="."]
 position = Vector2(0, 4)
 collision_layer = 4
 script = ExtResource("1_sko1a")
 
-[node name="Collision" type="CollisionShape2D" parent="rocket_cherry"]
+[node name="Collision" type="CollisionShape2D" parent="RocketCherry"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_ovjih")
 
-[node name="anim" type="AnimatedSprite2D" parent="rocket_cherry"]
+[node name="Anim" type="AnimatedSprite2D" parent="RocketCherry"]
 sprite_frames = SubResource("SpriteFrames_qh5pw")
 animation = &"hurt"
 autoplay = "flying"
 
-[node name="Hitbox" type="Area2D" parent="rocket_cherry"]
+[node name="Hitbox" type="Area2D" parent="RocketCherry"]
 script = ExtResource("4_6tyje")
 
-[node name="Collision" type="CollisionShape2D" parent="rocket_cherry/Hitbox"]
+[node name="Collision" type="CollisionShape2D" parent="RocketCherry/Hitbox"]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_iby5f")
 debug_color = Color(0.541176, 0.0156863, 0.137255, 0.419608)
@@ -120,7 +120,7 @@ position = Vector2(0, 4)
 rotates = false
 
 [node name="RemoteTransform" type="RemoteTransform2D" parent="Path/PathFollow"]
-remote_path = NodePath("../../../rocket_cherry")
+remote_path = NodePath("../../../RocketCherry")
 
 [node name="SpawnEnemy" type="Marker2D" parent="."]
 
@@ -131,5 +131,5 @@ libraries = {
 autoplay = "patrol"
 speed_scale = 0.4
 
-[connection signal="animation_finished" from="rocket_cherry/anim" to="rocket_cherry" method="_on_anim_animation_finished"]
-[connection signal="body_entered" from="rocket_cherry/Hitbox" to="rocket_cherry" method="_on_hitbox_body_entered"]
+[connection signal="animation_finished" from="RocketCherry/Anim" to="RocketCherry" method="_on_anim_animation_finished"]
+[connection signal="body_entered" from="RocketCherry/Hitbox" to="RocketCherry" method="_on_hitbox_body_entered"]

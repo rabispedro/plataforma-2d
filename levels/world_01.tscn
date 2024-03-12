@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://chnedi2gcascd"]
+[gd_scene load_steps=46 format=3 uid="uid://chnedi2gcascd"]
 
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_73amx"]
 [ext_resource type="Texture2D" uid="uid://pybukby6paxo" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_bfx42"]
@@ -321,6 +321,14 @@ frame_2/texture = ExtResource("28_1tckj")
 frame_2/duration = 1.0
 frame_3/texture = ExtResource("29_tta4r")
 frame_3/duration = 1.0
+
+[sub_resource type="GDScript" id="GDScript_ltmol"]
+script/source = "extends EnemyBase
+
+func _physics_process(delta):
+	_apply_gravity(delta)
+	movement(delta)
+"
 
 [node name="World01" type="Node2D"]
 script = ExtResource("1_73amx")
@@ -701,6 +709,7 @@ vertical_alignment = 1
 
 [node name="BasePatrol" parent="." instance=ExtResource("35_4apjl")]
 position = Vector2(560, 224)
+script = SubResource("GDScript_ltmol")
 
 [connection signal="body_entered" from="Spike" to="Spike" method="_on_body_entered"]
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]
