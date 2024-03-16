@@ -5,9 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://cd5wsujlbehk5" path="res://assets/Sprite Pack 2/7 - Rocket Cherry/Hurt_Falling (16 x 32).png" id="3_7vcgn"]
 [ext_resource type="Script" path="res://scripts/Hitbox.gd" id="4_6tyje"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ovjih"]
-radius = 8.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gc8gb"]
 atlas = ExtResource("2_4f3la")
 region = Rect2(0, 0, 16, 32)
@@ -31,19 +28,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"flying",
-"speed": 7.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s4mb3")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovjih"]
+radius = 8.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iby5f"]
-size = Vector2(16, 4)
+size = Vector2(16, 8)
 
 [sub_resource type="Curve2D" id="Curve2D_kvo36"]
 _data = {
@@ -94,21 +94,22 @@ _data = {
 position = Vector2(0, 4)
 collision_layer = 4
 script = ExtResource("1_sko1a")
+enemy_score = 500
+
+[node name="Anim" type="AnimatedSprite2D" parent="RocketCherry"]
+sprite_frames = SubResource("SpriteFrames_qh5pw")
+animation = &"flying"
+autoplay = "flying"
 
 [node name="Collision" type="CollisionShape2D" parent="RocketCherry"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_ovjih")
 
-[node name="Anim" type="AnimatedSprite2D" parent="RocketCherry"]
-sprite_frames = SubResource("SpriteFrames_qh5pw")
-animation = &"hurt"
-autoplay = "flying"
-
 [node name="Hitbox" type="Area2D" parent="RocketCherry"]
 script = ExtResource("4_6tyje")
 
 [node name="Collision" type="CollisionShape2D" parent="RocketCherry/Hitbox"]
-position = Vector2(0, -2)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_iby5f")
 debug_color = Color(0.541176, 0.0156863, 0.137255, 0.419608)
 
@@ -131,5 +132,4 @@ libraries = {
 autoplay = "patrol"
 speed_scale = 0.4
 
-[connection signal="animation_finished" from="RocketCherry/Anim" to="RocketCherry" method="_on_anim_animation_finished"]
-[connection signal="body_entered" from="RocketCherry/Hitbox" to="RocketCherry" method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="RocketCherry/Hitbox" to="RocketCherry/Hitbox" method="_on_body_entered"]

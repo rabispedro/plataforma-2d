@@ -1,17 +1,11 @@
 class_name RocketCherry
-extends CharacterBody2D
+extends EnemyBase
 
-@export_category("Properties")
-@export_range(0, 500, 1) var enemy_score: int = 150
+@onready var spawn_enemy: Marker2D = $"../SpawnEnemy"
 
-@onready var animation: AnimatedSprite2D = $Anim
-
-func _on_hitbox_body_entered(_body: Node2D) -> void:
-	animation.play("hurt")
-	return
-
-func _on_anim_animation_finished() -> void:
-	if animation.animation == "hurt":
-		queue_free()
-		Globals.score += enemy_score
+func _ready() -> void:
+	spawn_instance = preload("res://actors/cherry.tscn")
+	spawn_instance_position = spawn_enemy
+	can_spawn = true
+	anim.animation_finished.connect(kill_fly_enemy)
 	return

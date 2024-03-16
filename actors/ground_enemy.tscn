@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://1bdj4cqu7qpm"]
 
+[ext_resource type="Script" path="res://scripts/ground_enemy.gd" id="1_hidq6"]
 [ext_resource type="Texture2D" uid="uid://bbavycx8w4dfx" path="res://assets/Sprite Pack 2/4 - Robo Pumpkin/Walking (16 x 16).png" id="1_ink7v"]
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_vwnp2"]
 [ext_resource type="Texture2D" uid="uid://b5osee0ekf22o" path="res://assets/Sprite Pack 2/4 - Robo Pumpkin/Hurt (16 x 16).png" id="3_ximf5"]
 [ext_resource type="Texture2D" uid="uid://bk7gg1w2alu52" path="res://assets/Sprite Pack 2/4 - Robo Pumpkin/Standing (16 x 16).png" id="4_rsy0h"]
 [ext_resource type="PackedScene" uid="uid://c4t42w0a8swhx" path="res://prefabs/hitbox.tscn" id="5_uhpcd"]
@@ -15,7 +15,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("texture:texture")
+tracks/0/path = NodePath("Texture:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +27,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("texture:hframes")
+tracks/1/path = NodePath("Texture:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -39,7 +39,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("texture:frame")
+tracks/2/path = NodePath("Texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -55,7 +55,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("texture:texture")
+tracks/0/path = NodePath("Texture:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -67,7 +67,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("texture:hframes")
+tracks/1/path = NodePath("Texture:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -79,7 +79,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("texture:frame")
+tracks/2/path = NodePath("Texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -96,7 +96,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("texture:texture")
+tracks/0/path = NodePath("Texture:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -108,7 +108,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("texture:hframes")
+tracks/1/path = NodePath("Texture:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -120,7 +120,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("texture:frame")
+tracks/2/path = NodePath("Texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -137,7 +137,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("texture:texture")
+tracks/0/path = NodePath("Texture:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -149,7 +149,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("texture:hframes")
+tracks/1/path = NodePath("Texture:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -161,7 +161,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("texture:frame")
+tracks/2/path = NodePath("Texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -182,13 +182,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rf5x8"]
 size = Vector2(10, 2)
 
-[node name="enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="GroundEnemy" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(1, -8)
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_vwnp2")
+script = ExtResource("1_hidq6")
 
-[node name="texture" type="Sprite2D" parent="."]
+[node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_ink7v")
 hframes = 2
 
@@ -197,21 +197,19 @@ position = Vector2(0, 4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v31ua")
 
-[node name="anim" type="AnimationPlayer" parent="."]
+[node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_rnk68")
 }
 autoplay = "walk"
 speed_scale = 0.5
 
-[node name="wall_detector" type="RayCast2D" parent="."]
+[node name="WallDetector" type="RayCast2D" parent="."]
 target_position = Vector2(-8, 0)
 collision_mask = 6
 
 [node name="Hitbox" parent="." instance=ExtResource("5_uhpcd")]
 
-[node name="Collision2" type="CollisionShape2D" parent="Hitbox"]
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_rf5x8")
-
-[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

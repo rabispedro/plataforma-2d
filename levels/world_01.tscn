@@ -14,7 +14,7 @@
 [ext_resource type="Shader" path="res://shaders/movement_clouds.gdshader" id="6_twcp0"]
 [ext_resource type="Texture2D" uid="uid://brtsarfngh85w" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="7_wd8mg"]
 [ext_resource type="Texture2D" uid="uid://cvswl63n5d4hy" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="8_mfm7s"]
-[ext_resource type="PackedScene" uid="uid://1bdj4cqu7qpm" path="res://actors/enemy.tscn" id="12_7bl5x"]
+[ext_resource type="PackedScene" uid="uid://1bdj4cqu7qpm" path="res://actors/ground_enemy.tscn" id="12_7bl5x"]
 [ext_resource type="PackedScene" uid="uid://j6cvsg4uc226" path="res://prefabs/falling_platform.tscn" id="13_mm1p4"]
 [ext_resource type="Texture2D" uid="uid://c2hl0j4ti38ef" path="res://assets/Extras/ui_buttons_arrow_left_NORMAL.png" id="14_vujih"]
 [ext_resource type="Texture2D" uid="uid://boes6unw7acs5" path="res://assets/Extras/ui_buttons_arrow_left_PRESSED.png" id="15_x3whp"]
@@ -701,6 +701,18 @@ vertical_alignment = 1
 
 [node name="BasePatrol" parent="." instance=ExtResource("35_4apjl")]
 position = Vector2(560, 224)
+
+[node name="BasePatrol2" parent="." instance=ExtResource("35_4apjl")]
+position = Vector2(496, 224)
+
+[node name="BasePatrol5" parent="." instance=ExtResource("35_4apjl")]
+position = Vector2(184, 184)
+
+[node name="BasePatrol3" parent="." instance=ExtResource("35_4apjl")]
+position = Vector2(808, 248)
+
+[node name="BasePatrol4" parent="." instance=ExtResource("35_4apjl")]
+position = Vector2(736, 192)
 
 [connection signal="body_entered" from="Spike" to="Spike" method="_on_body_entered"]
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]
