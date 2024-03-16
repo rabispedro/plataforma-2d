@@ -1,4 +1,5 @@
 [gd_scene load_steps=46 format=3 uid="uid://chnedi2gcascd"]
+[gd_scene load_steps=46 format=3 uid="uid://chnedi2gcascd"]
 
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_73amx"]
 [ext_resource type="Texture2D" uid="uid://pybukby6paxo" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_bfx42"]
