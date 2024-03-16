@@ -1,69 +1,63 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2ym16740ic7k"]
+[gd_scene load_steps=10 format=3 uid="uid://gbqeny17m3la"]
 
-[ext_resource type="Script" path="res://scripts/cherry.gd" id="1_d5rsr"]
-[ext_resource type="Texture2D" uid="uid://bu1meph3d2gyh" path="res://assets/Sprite Pack 2/7 - Rocket Cherry/Hopping (16 x 32).png" id="1_jnccp"]
-[ext_resource type="Texture2D" uid="uid://dm5yr2f37v7sl" path="res://assets/Sprite Pack 2/7 - Rocket Cherry/Hurt (16 x 32).png" id="2_hhqet"]
-[ext_resource type="PackedScene" uid="uid://c4t42w0a8swhx" path="res://prefabs/hitbox.tscn" id="4_uf3bc"]
+[ext_resource type="Script" path="res://scripts/cherry.gd" id="1_lhwbk"]
+[ext_resource type="Texture2D" uid="uid://bu1meph3d2gyh" path="res://assets/Sprite Pack 2/7 - Rocket Cherry/Hopping (16 x 32).png" id="1_qmj6h"]
+[ext_resource type="Texture2D" uid="uid://dm5yr2f37v7sl" path="res://assets/Sprite Pack 2/7 - Rocket Cherry/Hurt (16 x 32).png" id="2_i6fx4"]
+[ext_resource type="PackedScene" uid="uid://c4t42w0a8swhx" path="res://prefabs/hitbox.tscn" id="3_shcc0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8g3su"]
-size = Vector2(12, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_imncq"]
-atlas = ExtResource("1_jnccp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk346"]
+atlas = ExtResource("1_qmj6h")
 region = Rect2(0, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_litcy"]
-atlas = ExtResource("1_jnccp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6y2s"]
+atlas = ExtResource("1_qmj6h")
 region = Rect2(16, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o2smj"]
-atlas = ExtResource("2_hhqet")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_pu7v4"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6fbna"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_imncq")
+"texture": SubResource("AtlasTexture_nk346")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_litcy")
+"texture": SubResource("AtlasTexture_n6y2s")
 }],
 "loop": true,
 "name": &"hopping",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o2smj")
+"texture": ExtResource("2_i6fx4")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0h8d"]
-size = Vector2(15, 4)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmb5k"]
+size = Vector2(16, 12)
 
-[node name="cherry" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48xtj"]
+size = Vector2(20, 4)
+
+[node name="Cherry" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
-script = ExtResource("1_d5rsr")
+script = ExtResource("1_lhwbk")
 
-[node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 5)
-shape = SubResource("RectangleShape2D_8g3su")
-
-[node name="anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(-4, -6)
-sprite_frames = SubResource("SpriteFrames_pu7v4")
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6fbna")
 animation = &"hopping"
 autoplay = "hopping"
-frame_progress = 0.775408
 
-[node name="hitbox" parent="." instance=ExtResource("4_uf3bc")]
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_pmb5k")
 
-[node name="collision" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(-3.5, -1)
-shape = SubResource("RectangleShape2D_w0h8d")
-debug_color = Color(0.878431, 0, 0.823529, 0.419608)
+[node name="Hitbox" parent="." instance=ExtResource("3_shcc0")]
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_48xtj")
+debug_color = Color(0.121569, 0.490196, 0.0862745, 0.419608)
