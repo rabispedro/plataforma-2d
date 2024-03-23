@@ -31,6 +31,7 @@ func _process(_delta: float) -> void:
 	
 	if minutes == 0 and seconds == 0:
 		emit_signal("time_is_up")
+		reset_clock_timer()
 	return
 
 func _on_clock_timer_timeout() -> void:
