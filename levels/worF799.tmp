@@ -747,7 +747,7 @@ script = ExtResource("39_ndyld")
 
 [node name="goal" parent="." instance=ExtResource("38_yx6t4")]
 light_mask = 2
-position = Vector2(864, 93)
+position = Vector2(864, 95)
 next_level = "res://levels/world_2.tscn"
 
 [connection signal="body_entered" from="Spike" to="Spike" method="_on_body_entered"]
