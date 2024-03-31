@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://chnedi2gcascd"]
+[gd_scene load_steps=53 format=3 uid="uid://chnedi2gcascd"]
 
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_73amx"]
 [ext_resource type="Texture2D" uid="uid://pybukby6paxo" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_bfx42"]
@@ -41,6 +41,7 @@
 [ext_resource type="Shader" path="res://shaders/transition.gdshader" id="38_kg5fu"]
 [ext_resource type="PackedScene" uid="uid://cf4l68v0jd50j" path="res://prefabs/goal.tscn" id="38_yx6t4"]
 [ext_resource type="Script" path="res://scripts/color_rect.gd" id="39_ndyld"]
+[ext_resource type="AudioStream" uid="uid://b2kovyee88fxv" path="res://assets/sound/ambient/world01-ambient.wav" id="42_wohvw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kfis1"]
 texture = ExtResource("1_bfx42")
@@ -749,6 +750,12 @@ script = ExtResource("39_ndyld")
 light_mask = 2
 position = Vector2(864, 93)
 next_level = "res://levels/world_2.tscn"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("42_wohvw")
+volume_db = -8.0
+pitch_scale = 0.8
+autoplay = true
 
 [connection signal="body_entered" from="Spike" to="Spike" method="_on_body_entered"]
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]

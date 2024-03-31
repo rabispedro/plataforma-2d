@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwdwey5jucjla"]
+[gd_scene load_steps=8 format=3 uid="uid://cwdwey5jucjla"]
 
 [ext_resource type="Script" path="res://scripts/breakable_box.gd" id="1_rnnhv"]
 [ext_resource type="Texture2D" uid="uid://ln60hjg8ocvj" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/Blocks (16 x 16).png" id="1_x4420"]
+[ext_resource type="AudioStream" uid="uid://c4a54us4o26xm" path="res://assets/sound/sfx/hit-block-sfx.wav" id="3_jf20m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_naqyw"]
 size = Vector2(16, 16)
@@ -87,3 +88,7 @@ libraries = {
 
 [node name="spawn_coin" type="Marker2D" parent="."]
 position = Vector2(0, -9)
+
+[node name="HitBlockSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jf20m")
+volume_db = 4.0

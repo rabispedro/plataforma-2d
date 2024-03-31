@@ -9,6 +9,8 @@ const coin_instance: PackedScene = preload("res://prefabs/coin_rigid.tscn")
 @export var hitpoints: int = 3
 @export var impulse: int = 200
 
+
+@onready var hit_block_sfx: AudioStreamPlayer = $HitBlockSFX
 @onready var animator: AnimationPlayer = $Animator
 @onready var spawn_coin: Marker2D = $spawn_coin
 
