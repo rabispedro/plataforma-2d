@@ -13,7 +13,7 @@ func _ready() -> void:
 	Globals.player = player
 	Globals.player.follow_camera(camera)
 	Globals.player.player_has_died.connect(reload_game)
-	control.time_is_up.connect(reload_game)
+	control.time_is_up.connect(game_over)
 	return
 
 func reload_game() -> void:
@@ -39,3 +39,8 @@ func reload_game() -> void:
 	Globals.respawn_player()
 	#get_tree().reload_current_scene()
 	return
+	
+func game_over() -> void:
+	get_tree().reload_current_scene()
+	return
+	

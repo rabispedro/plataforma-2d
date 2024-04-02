@@ -592,6 +592,7 @@ text = "03"
 vertical_alignment = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("35_ehjle")]
+visible = false
 
 [node name="BasePatrol" parent="." instance=ExtResource("36_jei3d")]
 position = Vector2(560, 224)

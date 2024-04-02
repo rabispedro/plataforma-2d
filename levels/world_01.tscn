@@ -710,6 +710,7 @@ text = "03"
 vertical_alignment = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("35_ak4t3")]
+visible = false
 
 [node name="BasePatrol" parent="." instance=ExtResource("35_4apjl")]
 position = Vector2(560, 224)
@@ -733,6 +734,7 @@ position = Vector2(462, 271)
 position = Vector2(633, 224)
 
 [node name="transition" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("38_k7tb7")
 
 [node name="color_rect" type="ColorRect" parent="transition"]
