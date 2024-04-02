@@ -6,6 +6,8 @@ signal player_has_died()
 const SPEED: float = 150.0
 const JUMP_FORCE: float = -400.0
 
+@onready var jump_sfx: AudioStreamPlayer = $JumpSFX
+
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping: bool = false
 var is_hurted: bool
@@ -14,6 +16,7 @@ var direction: float
 
 @onready var animation: AnimatedSprite2D = $anim
 @onready var remote_transform: RemoteTransform2D = $Remote
+@onready var destroy_block_sfx: PackedScene = preload("res://prefabs/destroy_block_sfx.tscn")
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -23,6 +26,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_FORCE
 		is_jumping = true
+		jump_sfx.play()
 	elif is_on_floor():
 		is_jumping = false
 	
@@ -109,7 +113,19 @@ func _on_head_collider_body_entered(body) -> void:
 		body.hitpoints -= 1
 		if body.hitpoints < 0:
 			body.break_sprite()
+			play_destroy_block_sfx()
 		else:
 			body.animator.play("hit")
+			body.hit_block_sfx.play()
 			body.create_coin()
+	return
+
+func play_destroy_block_sfx() -> void:
+	var instance = destroy_block_sfx.instantiate()
+	get_parent().add_child(instance)
+	instance.play()
+	
+	await instance.finished
+	
+	instance.queue_free()
 	return

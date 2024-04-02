@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://68km1nlywsxd"]
+
+[ext_resource type="AudioStream" uid="uid://c1konpb56rmo8" path="res://assets/sound/sfx/destroy-block-sfx.wav" id="1_g7seq"]
+
+[node name="DestroyBlockSFX" type="AudioStreamPlayer"]
+stream = ExtResource("1_g7seq")
+volume_db = -4.0
