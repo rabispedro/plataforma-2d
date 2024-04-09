@@ -12,7 +12,7 @@ func _ready() -> void:
 	Globals.current_checkpoint = default_player_spawn
 	Globals.player = player
 	Globals.player.follow_camera(camera)
-	Globals.player.player_has_died.connect(reload_game)
+	Globals.player.player_has_died.connect(game_over)
 	control.time_is_up.connect(game_over)
 	return
 
@@ -31,7 +31,7 @@ func reload_game() -> void:
 
 	Globals.player = player
 	Globals.player.follow_camera(camera)
-	Globals.player.player_has_died.connect(reload_game)
+	Globals.player.player_has_died.connect(game_over)
 	Globals.coins = 0
 	Globals.score = 0
 	Globals.player_life = 3
@@ -41,6 +41,6 @@ func reload_game() -> void:
 	return
 	
 func game_over() -> void:
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	return
 	
