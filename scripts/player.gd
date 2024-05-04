@@ -3,36 +3,55 @@ extends CharacterBody2D
 
 signal player_has_died()
 
-const SPEED: float = 150.0
-const JUMP_FORCE: float = -400.0
+const SPEED: float = 128.0
+const AIR_FRICTION: float = 0.5
 
-@onready var jump_sfx: AudioStreamPlayer = $JumpSFX
+@export_category("Jump Controll")
+@export var jump_height: int = 64
+@export var max_time_to_peak: float = 0.5
 
-var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var jump_velocity: float
+var gravity: float
+var fall_gravity: float
 var is_jumping: bool = false
 var is_hurted: bool
 var knockback_vector: Vector2 = Vector2.ZERO
 var direction: float
 
+@onready var jump_sfx: AudioStreamPlayer = $JumpSFX
 @onready var animation: AnimatedSprite2D = $anim
 @onready var remote_transform: RemoteTransform2D = $Remote
 @onready var destroy_block_sfx: PackedScene = preload("res://prefabs/destroy_block_sfx.tscn")
 
+func _ready() -> void:
+	jump_velocity = (2.0 * jump_height) / max_time_to_peak
+	gravity = (2.0 * jump_height) / max_time_to_peak ** 2.0
+	fall_gravity = gravity * 2
+	
+	print_debug("2 to the power of 3: ", 2.0 ** 3)
+	
+	return
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.x = 0.0
 	
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_FORCE
+		velocity.y = -jump_velocity
 		is_jumping = true
 		jump_sfx.play()
 	elif is_on_floor():
 		is_jumping = false
+		
+	if velocity.y > 0 or not Input.is_action_pressed("ui_accept"):
+		velocity.y += fall_gravity * delta
+	else:
+		velocity.y += gravity * delta
 	
 	direction = Input.get_axis("ui_left", "ui_right")
 	if direction != 0:
-		velocity.x = direction * SPEED
+		velocity.x = lerp(velocity.x, direction * SPEED, AIR_FRICTION)
 		animation.scale.x = direction
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -87,7 +106,7 @@ func take_damage(knockback_force: Vector2 = Vector2.ZERO, duration: float = 0.25
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			velocity.y = JUMP_FORCE
+			velocity.y = -jump_velocity
 			is_jumping = true
 		elif is_on_floor():
 			is_jumping = false

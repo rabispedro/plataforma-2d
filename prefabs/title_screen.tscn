@@ -114,8 +114,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 3840.0
-offset_bottom = 1920.0
+offset_right = 5760.0
+offset_bottom = 2880.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 20
@@ -170,6 +170,7 @@ flip_h = true
 libraries = {
 "": SubResource("AnimationLibrary_2qswg")
 }
+autoplay = "reveal"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/credits_btn2" to="." method="_on_credits_btn_2_pressed"]
