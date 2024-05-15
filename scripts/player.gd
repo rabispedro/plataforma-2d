@@ -25,10 +25,8 @@ var direction: float
 
 func _ready() -> void:
 	jump_velocity = (2.0 * jump_height) / max_time_to_peak
-	gravity = (2.0 * jump_height) / max_time_to_peak ** 2.0
+	gravity = (2.0 * jump_height) / (max_time_to_peak ** 2.0)
 	fall_gravity = gravity * 2
-	
-	print_debug("2 to the power of 3: ", 2.0 ** 3)
 	
 	return
 

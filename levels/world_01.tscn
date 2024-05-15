@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://chnedi2gcascd"]
+[gd_scene load_steps=54 format=3 uid="uid://chnedi2gcascd"]
 
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_73amx"]
 [ext_resource type="Texture2D" uid="uid://pybukby6paxo" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_bfx42"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://ccsv0iur8hvo6" path="res://assets/Extras/ui_buttons_arrow_right_NORMAL.png" id="16_7us77"]
 [ext_resource type="Texture2D" uid="uid://b5daep0t1faxc" path="res://assets/Extras/ui_buttons_arrow_right_PRESSED.png" id="17_ws4h1"]
 [ext_resource type="Texture2D" uid="uid://bk2nvx4rm1ekp" path="res://assets/Extras/ui_buttons_arrow_up_NORMAL.png" id="18_85w8l"]
+[ext_resource type="PackedScene" uid="uid://ox0uwukh70e7" path="res://actors/t_rex.tscn" id="18_rcxj0"]
 [ext_resource type="Texture2D" uid="uid://1fei5gslfs67" path="res://assets/Extras/ui_buttons_arrow_up_PRESSED.png" id="19_iagat"]
 [ext_resource type="PackedScene" uid="uid://cwdwey5jucjla" path="res://prefabs/breakable_box.tscn" id="20_ei5ks"]
 [ext_resource type="Script" path="res://scripts/warning_sign.gd" id="22_jrxb7"]
@@ -531,6 +532,9 @@ position = Vector2(256, 256)
 
 [node name="enemy4" parent="Enemies" instance=ExtResource("12_7bl5x")]
 position = Vector2(432, 96)
+
+[node name="TRex" parent="Enemies" instance=ExtResource("18_rcxj0")]
+position = Vector2(188, 268)
 
 [node name="Controls" type="CanvasLayer" parent="."]
 
