@@ -68,11 +68,15 @@ func _physics_process(delta: float) -> void:
 	
 	return
 
-func _on_hurt_box_body_entered(_body) -> void:
+func _on_hurt_box_body_entered(body: PhysicsBody2D) -> void:
 	if $ray_right.is_colliding():
 		take_damage(Vector2(-200,-200))
 	elif $ray_left.is_colliding():
 		take_damage(Vector2(200,-200))
+	
+	if body.is_in_group("fireball"):
+		body.queue_free()
+	
 	return
 
 func follow_camera(camera: Camera2D) -> void:
