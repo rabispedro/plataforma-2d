@@ -83,7 +83,7 @@ radius = 8.0
 height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3e7m"]
-size = Vector2(18, 11)
+size = Vector2(18, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5goye"]
 size = Vector2(18, 5)
@@ -109,21 +109,11 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="Collision" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, 5.5)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_q3e7m")
 debug_color = Color(0.545098, 0, 0, 0.419608)
 
 [node name="Remote" type="RemoteTransform2D" parent="."]
-
-[node name="ray_right" type="RayCast2D" parent="."]
-position = Vector2(8, 4)
-target_position = Vector2(4, 0)
-collision_mask = 4
-
-[node name="ray_left" type="RayCast2D" parent="."]
-position = Vector2(-8, 4)
-target_position = Vector2(-4, 0)
-collision_mask = 4
 
 [node name="HeadCollider" type="Area2D" parent="."]
 collision_layer = 0
