@@ -1,21 +1,44 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtnkwxr5n87d3"]
 
-[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_poqvy"]
 [ext_resource type="Texture2D" uid="uid://b7baxvqibj7u6" path="res://assets/initial screen/title-screen.jpg" id="2_vcmlx"]
 [ext_resource type="Texture2D" uid="uid://k3nsyiik7xj7" path="res://credits/marcao.jpg" id="4_4wwnw"]
 [ext_resource type="Theme" uid="uid://d20rsxskh0vp8" path="res://default_btn.tres" id="4_pned0"]
 [ext_resource type="Texture2D" uid="uid://b8iasa2rxogg8" path="res://credits/pedrao.jpg" id="5_ipbme"]
 
+[sub_resource type="GDScript" id="GDScript_l52qo"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	Globals.coins = 0
+	Globals.score = 0
+	Globals.player_life = 3
+
+func _on_start_btn_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://levels/world_01.tscn\")
+	return
+
+func _on_credits_btn_2_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://prefabs/credits_screen.tscn\")
+	return
+
+
+func _on_quit_btn_pressed() -> void:
+	get_tree().quit()
+	return
+"
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_60piu"]
 
-[node name="TitleScreen" type="Control"]
+[node name="credits_screen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_poqvy")
+script = SubResource("GDScript_l52qo")
 
 [node name="bg" type="TextureRect" parent="."]
 layout_mode = 2
@@ -26,10 +49,9 @@ expand_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_right = 654.0
 grow_vertical = 2
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 20
@@ -40,7 +62,8 @@ size_flags_horizontal = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 0
+size_flags_vertical = 8
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -56,14 +79,14 @@ text = "QUIT GAME"
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("4_4wwnw")
-expand_mode = 2
+expand_mode = 3
 flip_h = true
 
 [node name="mochi2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("5_ipbme")
-expand_mode = 2
+expand_mode = 3
 flip_h = true
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
