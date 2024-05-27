@@ -15,17 +15,12 @@ func _ready() -> void:
 	Globals.score = 0
 	Globals.player_life = 3
 
-func _on_start_btn_pressed() -> void:
-	get_tree().change_scene_to_file(\"res://levels/world_01.tscn\")
-	return
-
-func _on_credits_btn_2_pressed() -> void:
-	get_tree().change_scene_to_file(\"res://prefabs/credits_screen.tscn\")
-	return
-
-
 func _on_quit_btn_pressed() -> void:
 	get_tree().quit()
+	return
+
+func _on_back_btn_pressed():
+	get_tree().change_scene_to_file(\"res://prefabs/title_screen.tscn\")
 	return
 "
 
@@ -65,15 +60,20 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_60piu")
-
 [node name="quit_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("4_pned0")
 text = "QUIT GAME"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_60piu")
+
+[node name="back_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_pned0")
+text = "Back"
 
 [node name="mochi" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -90,3 +90,4 @@ expand_mode = 3
 flip_h = true
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/back_btn" to="." method="_on_back_btn_pressed"]
